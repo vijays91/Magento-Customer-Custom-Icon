@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Vijaystore_Customericon>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Vijaystore_Customericon>
+    </modules>
+</config>

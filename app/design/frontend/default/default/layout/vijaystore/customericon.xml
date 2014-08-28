@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+
+	<customer_account>
+		<reference name='customer_account_navigation'>
+			<action method="addLink" translate="label" module="customer" ifconfig="customericon_tab/customericon_setting/customericon_active">
+				<name>customercustomicon</name>
+				<path>customericon/index/index</path>
+				<label>Customer Custom Icon</label>
+			</action>
+		</reference>
+	</customer_account>
+	
+	<customericon_index_index>
+		<label>Customer Custom Icon</label>
+        <update handle="customer_account" />
+        <reference name="my.account.wrapper" >
+            <block type="core/template" name="customer_custom_icon" template="vijaystore/customericon/customericon.phtml"/>
+        </reference>
+	</customericon_index_index>
+	
+</layout>

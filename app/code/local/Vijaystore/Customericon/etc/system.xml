@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <myconf_vijaystore translate="label" module="customericon">
+            <label>VijayStore</label>
+            <sort_order>300</sort_order>
+        </myconf_vijaystore>
+    </tabs>	
+    <sections>
+        <customericon_tab translate="label" module="customericon">
+            <label>Customer Custom Icon</label>
+            <tab>myconf_vijaystore</tab>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <customericon_setting translate="label comment">
+                    <label>Customer Custom Icon Setting</label>
+                    <sort_order>503</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                      <customericon_active translate="label comment">
+                            <label>Customer Custom Icon</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<comment>Customer Custom Icon Enable/Disable</comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customericon_active>
+						<customericon_width translate="label comment">
+                            <label>Customer Custom Icon Width</label>
+							<frontend_type>text</frontend_type>
+							<validate>required-entry validate-number validate-digits-range digits-range-30-80</validate>
+							<comment>Customer Custom Icon Default Width(Range 30-80)</comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customericon_width>
+						
+						<customericon_height translate="label comment">
+                            <label>Customer Custom Icon  Height</label>
+							<frontend_type>text</frontend_type>
+							<validate>required-entry validate-number validate-digits-range digits-range-30-80</validate>
+							<comment>Customer Custom Icon Default Height(Range 30-80)</comment>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customericon_height>
+                     </fields>
+                </customericon_setting>		
+            </groups>
+        </customericon_tab>
+    </sections>
+</config>

@@ -1,0 +1,78 @@
+<?php 
+$current_customer_id = Mage::getSingleton('customer/session')->getCustomer()->getId(); 
+$customIconEnable = Mage::helper('customericon/data')->customer_icon_enable();
+$defWidth  = Mage::helper('customericon/data')->customer_icon_width(); 
+$defHeight = Mage::helper('customericon/data')->customer_icon_height();
+if($customIconEnable)
+{
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('Customer Custom Icon');?></h1>
+</div>
+
+<div class="billing-agreements">
+	<form name="customer_custom_icon_form" id="customer_custom_icon_form" action="<?php echo $this->getUrl().'customericon/index/upload'; ?>" method="post" enctype="multipart/form-data">
+
+	<div class="fieldset">
+        <h2 class="legend"><?php echo $this->__('Customer Custom Icon');?></h2>
+		<table width="70%" cellpadding="10" >
+			<tr>
+				<td>
+					<?php echo $this->__('Upload Custom Icon :');?>
+				</td>
+				<td>
+					<input type="file" name="custom_icon" id="custom_icon" value="" class="required-entry" />
+					<input type="hidden" name="customer_id"  id="customer_id" value="<?php echo $current_customer_id ?>"  />
+					<input type="hidden" name="store_id"  id="store_id" value="<?php echo Mage::app()->getStore()->getStoreId() ?>"  />
+				</td>
+			</tr>
+			<tr><td>&nbsp;</td>
+				<td>
+					<?php echo $this->__('Please upload max %sx%s Images', $defWidth, $defHeight);?><br/>
+					<?php // echo $this->__('Otherwise Automatically resize to default size.');?>
+				</td>
+			</tr>
+			<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>
+					<button class="button btn-cart" title="Upload" type="submit">
+						<span><span><?php echo $this->__('Upload');?></span></span>
+					</button>
+				</td>
+			</tr>
+		</table>	
+	</form>	
+    <p>	&nbsp; </p>	
+	<p>	
+	<?php
+		$customIcon = Mage::getModel('customericon/customericon')->load($current_customer_id, 'customer_id');
+		$getImagePath = $customIcon->getImagePath();		
+	 
+		if($current_customer_id && $getImagePath)
+		{		
+			echo "<img src=\"". Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."vijaystore/customericon/images/".$getImagePath."\" alt='custom_icon_img' style='border: 1px solid;' />";
+		}
+		else
+		{
+			echo "<img src=\"". Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."vijaystore/customericon/images/default/default_icon.png\" alt='custom_icon_img_default' style='border: 1px solid;' /> ";
+		}
+	?>
+	</p>
+	</div>
+	
+    <div class="buttons-set">
+        <p class="back-link">
+			<a href="<?php echo $this->getUrl().'customer/account/'; ?>" >
+				<small>« </small><?php echo $this->__('Back'); ?>
+			</a>
+		</p>
+    </div>
+</div>
+
+<script>
+  var easyContactForm = new VarienForm('customer_custom_icon_form', true);
+</script>
+<?php
+}
+?>
